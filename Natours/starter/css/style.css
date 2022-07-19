@@ -19,11 +19,111 @@ body {
     font-size: 16px;
     line-height: 1.7;
     color: #777;
+    padding: 30px;
 }
 
 .header {
     height: 95vh;
-    background-image: linear-gradient(to right bottom, rgba(128, 214, 113, 0.7), rgba(40, 180, 133, 0.7)) , url(../img/hero.jpg);
+    background-image: linear-gradient(
+        to right bottom, rgba(128, 214, 113, 0.7), 
+        rgba(40, 180, 133, 0.7)) , 
+        url(../img/hero.jpg);
     background-size: cover;
-    background-position: top; 
+    background-position: top;
+    position: relative;
+    /* x y values, starting at the top left */
+    /* first pair/cornerbegins at 0 0 */
+    /* the 2nd pair */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
+}
+
+.logo-box {
+    position: absolute;
+    /* the following px are inheriting the relative positioning from the parent el 'header' */
+    top: 40px;
+    left: 40px;
+
+}
+
+.logo {
+    /* width is then automatically determined by the browser */
+    height: 35px;
+}
+
+.text-box {
+    position: absolute;
+    /* % of the height */
+    top: 35%;
+    /* % of the width of the parent element */
+    left: 50%;
+    /* transform applies to the element itself, not relative to the parent */
+    transform: translate(-50%, -50%);
+}
+
+.heading-primary {
+    color: #fff;
+    text-transform: uppercase;
+    /* !!!! this property helps prevent element from being shaky when animated */
+    backface-visibility: hidden;
+}
+
+.heading-primary-main {
+    /* span el is inline by default, it is a text el */
+    display: block;
+    font-size: 60px;
+    font-weight: 400;
+    letter-spacing: 35px;
+
+    animation-name: moveInLeft;
+    animation-duration: .7s; 
+    animation-timing-function: ease-out;
+
+
+    /* /////// just for reference.... */
+    /* animation-delay: 1s; */
+    /* animation-iteration-count: 3; */
+
+}
+
+.heading-primary-sub {
+    display: block;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 17.4px;
+    /* short hand for the animation name, duration, and timing function */
+    animation: moveInRight .7s ease-out;
+}
+
+@keyframes moveInLeft {
+    /* start */
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+
+    80% {
+        transform: translateX(10px);
+    }
+    /* fin */
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
+}
+
+@keyframes moveInRight {
+    /* start */
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    80% {
+        transform: translateX(-10px);
+    }
+    /* fin */
+    100% {
+        opacity: 1;
+        transform: translate(0);
+    }
 }
