@@ -1,0 +1,38 @@
+.header {
+    height: 95vh;
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.7), 
+        rgba($color-primary-dark, 0.7)) , 
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+    /* x y values, starting at the top left */
+    /* first pair/cornerbegins at 0 0 */
+    /* the 2nd pair */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
+
+    &__logo-box {
+        position: absolute;
+        /* the following px are inheriting the relative positioning from the parent el 'header' */
+        top: 4rem;
+        left: 4rem;
+    }
+
+    &__logo {
+        /* width is then automatically determined by the browser */
+        height: 3.5rem;
+    }
+
+    &__text-box {
+        position: absolute;
+        /* % of the height */
+        top: 35%;
+        /* % of the width of the parent element */
+        left: 50%;
+        /* transform applies to the element itself, not relative to the parent */
+        transform: translate(-50%, -50%);
+        text-align: center; 
+    }
+}
