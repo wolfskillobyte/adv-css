@@ -1,11 +1,10 @@
-/*
-COLORS:
 
-Light green: #7ed56f
-Medium green: #55c57a
-Dark green: #28b485
 
-/* after/before will apply to psuedo elements */
+$color-primary: #7ed56f;
+$color-primary-light: #55c57a;
+$color-primary-dark: #28b485;
+
+$color-grey-dark: #777;
 
 *,
 *::after,
@@ -28,7 +27,7 @@ body {
     font-weight: 400;
     /* font-size: 16px; */
     line-height: 1.7;
-    color: #777;
+    color: $color-grey-dark;
     padding: 3rem;
     box-sizing: border-box;
 }
@@ -36,8 +35,9 @@ body {
 .header {
     height: 95vh;
     background-image: linear-gradient(
-        to right bottom, rgba(128, 214, 113, 0.7), 
-        rgba(40, 180, 133, 0.7)) , 
+        to right bottom, 
+        rgba($color-primary-light, 0.7), 
+        rgba($color-primary-dark, 0.7)) , 
         url(../img/hero.jpg);
     background-size: cover;
     background-position: top;
@@ -48,12 +48,25 @@ body {
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); 
 }
 
+.header-overlay {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, 
+    rgba(0,0,0,.3) 0%,
+    rgba(0,0,0,0) 48%,
+    rgba(0,0,0,.3) 100%);
+    z-index: 0;
+}
+
 .header__logo-box {
     position: absolute;
     /* the following px are inheriting the relative positioning from the parent el 'header' */
     top: 4rem;
     left: 4rem;
-
 }
 
 .header__logo {
@@ -90,11 +103,9 @@ body {
     animation-duration: .7s; 
     animation-timing-function: ease-out;
 
-
     /* /////// just for reference.... */
     /* animation-delay: 1s; */
     /* animation-iteration-count: 3; */
-
 }
 
 .heading-primary--sub {
@@ -164,11 +175,6 @@ body {
     box-shadow: 0 .5rem 1rem rgba(0,0,0,.2);
 }
 
-.btn--white {
-    background-color: #fff;
-    color: #777;
-}
-
 .btn::after {
     content: "";
     display: inline-block;
@@ -182,13 +188,23 @@ body {
     transition: all .4s;
 }
 
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn--white {
+    background-color: #fff;
+    color: $color-grey-dark;
+}
+
 .btn-white::after {
     background-color: #fff;
 }
 
-.btn:hover::after {
-    transform: scaleX(1.4) scaleY(1.6);
-    opacity: 0;
+.btn--animated {
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
 }
 
 @keyframes moveInBottom {
@@ -208,7 +224,3 @@ body {
     }
 }
 
-.btn--animated {
-    animation: moveInBottom .5s ease-out .75s;
-    animation-fill-mode: backwards;
-}
