@@ -8,7 +8,7 @@
 
 /* this is now our root font size */
 html {
-    /* font-size: 10px; */
+    /* font-size: 10px; // or 1rem */
     /* we are using a percent instead of pixels */
     /* by default, the browser font size is 16px, but in the case that someone changes their font size like if they have bad eyesight, our other declared values can be responsive to this change */
     font-size: 62%;

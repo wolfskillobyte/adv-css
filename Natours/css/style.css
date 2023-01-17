@@ -7,7 +7,7 @@
 
 /* this is now our root font size */
 html {
-  /* font-size: 10px; */
+  /* font-size: 10px; // or 1rem */
   /* we are using a percent instead of pixels */
   /* by default, the browser font size is 16px, but in the case that someone changes their font size like if they have bad eyesight, our other declared values can be responsive to this change */
   font-size: 62%; }
@@ -56,6 +56,32 @@ body {
   100% {
     opacity: 1;
     transform: translate(0); } }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  /* !!!! this property helps prevent element from being shaky when animated */
+  backface-visibility: hidden;
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    /* span el is inline by default, it is a text el */
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: .7s;
+    animation-timing-function: ease-out;
+    /* /////// just for reference.... */
+    /* animation-delay: 1s; */
+    /* animation-iteration-count: 3; */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* short hand for the animation name, duration, and timing function */
+    animation: moveInRight .7s ease-out; }
 
 .btn {
   /* on click */ }
@@ -126,28 +152,22 @@ body {
     transform: translate(-50%, -50%);
     text-align: center; }
 
-.heading-primary {
-  color: #fff;
-  text-transform: uppercase;
-  /* !!!! this property helps prevent element from being shaky when animated */
-  backface-visibility: hidden;
-  margin-bottom: 6rem; }
-  .heading-primary--main {
-    /* span el is inline by default, it is a text el */
-    display: block;
-    font-size: 6rem;
-    font-weight: 400;
-    letter-spacing: 3.5rem;
-    animation-name: moveInLeft;
-    animation-duration: .7s;
-    animation-timing-function: ease-out;
-    /* /////// just for reference.... */
-    /* animation-delay: 1s; */
-    /* animation-iteration-count: 3; */ }
-  .heading-primary--sub {
-    display: block;
-    font-size: 2rem;
-    font-weight: 700;
-    letter-spacing: 1.75rem;
-    /* short hand for the animation name, duration, and timing function */
-    animation: moveInRight .7s ease-out; }
+.row {
+  max-width: 114rem;
+  background-color: rgba(119, 119, 119, 0.7);
+  margin: 0 auto;
+  color: #fff; }
+  .row:not(:last-child) {
+    margin-bottom: 4rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2);
+    background-color: aquamarine;
+    float: left; }
+    .row .col-1-of-2:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }

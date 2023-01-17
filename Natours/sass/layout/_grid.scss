@@ -1,0 +1,35 @@
+.row {
+    max-width: $grid-width;
+    background-color: rgba($color-grey-dark, .7);
+    // default margin for block elements
+    margin: 0 auto;
+    color: $white;
+
+    &:not(:last-child) {
+        margin-bottom: $gutter-vertical;
+    }
+
+    @include clearfix;
+
+    // attribute selector uses brackets [] 
+    // the ^ is selecting all elements with a class attr that begin with 'col-'
+    // the * would select any [class*='col-']
+    // the $ selecting elements ending with [class$='col-']
+    [class^="col-"] {
+        background-color: aquamarine;
+        float: left;
+
+        &:not(:last-child) {
+            margin-right: $gutter-horizontal;
+        }
+    }
+
+    .col-1-of-2 {
+        width: calc((100% - #{$gutter-horizontal}) / 2);
+
+    }
+
+    .col-1-of-3 {
+        width: calc((100% - 2 * #{$gutter-horizontal}) / 3);
+    }
+}
